@@ -1,0 +1,24 @@
+services:
+  evoto:
+    build: .
+    image: evoto:latest
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      SERVE_CLIENT: "true"
+      DATABASE_PATH: /data/evoto.db
+      CLIENT_ORIGIN: ${CLIENT_ORIGIN:-http://localhost:4000}
+    volumes:
+      - evoto-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+
+volumes:
+  evoto-data:

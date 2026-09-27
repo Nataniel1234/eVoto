@@ -1,0 +1,8 @@
+{
+  "name": "evoto-e2e",
+  "private": true,
+  "type": "module",
+  "description": "Teste ponta-a-ponta com Playwright (requer servidor em BASE, com dados de demonstração)",
+  "scripts": { "test": "node flow.mjs" },
+  "dependencies": { "playwright": "^1.63.0" }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "evoto",
+  "version": "1.0.0",
+  "private": true,
+  "description": "eVoto — sistema de votação electrónica seguro (React + Vite + Node.js + Express)",
+  "type": "module",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,magenta \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client && npm run build -w server",
+    "start": "SERVE_CLIENT=true NODE_ENV=production npm start -w server",
+    "test": "npm test -w server",
+    "typecheck": "npm run typecheck -w server && npm exec -w client -- tsc -b",
+    "seed": "npm run seed -w server",
+    "seed:demo": "npm run seed -w server -- --demo"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}
